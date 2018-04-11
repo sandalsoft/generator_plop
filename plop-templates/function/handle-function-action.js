@@ -6,19 +6,22 @@ const fileExists = require('../util/file-exists');
 const readFile = require('../util/read-file');
 const writeFile = require('../util/write-file');
 
-function handleFunctionAction(answers) {
-  console.log(`answers: ${JSON.stringify(answers)}`);
+const NEW_COMPONENT = 'NEW COMPONENT';
+
+function handleFunctionAction(answers, config) {
   const componentName = answers.componentName;
+  const componentPath = path.join('src', componentName);
   const functionName = answers.functionName;
   const functionFileName = changeCase.paramCase(functionName);
   const exportTemplate = `export { ${functionName} } from './${functionFileName}';\n`;
 
-  const indexPath = path.join('src', componentName, 'index.js');
-  console.log(`indexPath: ${JSON.stringify(indexPath)}`);
-  fileExists(indexPath)
-    ? fs.appendFileSync(indexPath, exportTemplate)
+  answers.componentName === NEW_COMPONENT && fs.mkdirsSync(componentPath);
+  const filePath = path.join(componentPath, 'index.js');
+
+  fileExists(filePath)
+    ? fs.appendFileSync(filePath, exportTemplate)
     : writeFile({
-        filePath: indexPath,
+        filePath,
         fileData: exportTemplate
       });
   return 'done!';

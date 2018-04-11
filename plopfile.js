@@ -12,6 +12,10 @@ const componentChoices = [
 ];
 
 module.exports = function(plop) {
+  plop.setActionType('addExportToIndex', function(answers, config, plop) {
+    return handleFunctionAction(answers, config);
+  });
+
   plop.setGenerator('function', {
     description: 'Create a new function',
     prompts: [
@@ -38,14 +42,12 @@ module.exports = function(plop) {
         path: 'src/{{componentName}}/{{kebabCase functionName}}.test.js',
         templateFile: 'plop-templates/function/createTest.tmpl.js'
       },
-      handleFunctionAction
-      // {
-      //   type: 'append',
-      //   path: 'src/{{componentName}}/index.js',
-      //   unique: true,
-      //   // templateFile: 'plop-templates/function/appendExportToIndex.tmpl.js',
-      //   teomplate: `export { {{ functionName }} } from './{{kebabCase functionName}}';`
-      // }
+      {
+        type: 'addExportToIndex',
+        indexPath: 'src/{{componentName}}/index.js'
+        //   // templateFile: 'plop-templates/function/appendExportToIndex.tmpl.js',
+        //   teomplate: `export { {{ functionName }} } from './{{kebabCase functionName}}';`
+      }
     ]
   });
 
