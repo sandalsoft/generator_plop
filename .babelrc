@@ -1,0 +1,29 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@util": "./src/util",
+          "@config": "./config"
+        }
+      }
+    ],
+    "transform-es2015-spread",
+    "transform-object-rest-spread",
+    "transform-async-to-generator",
+    "transform-es2015-modules-commonjs"
+  ],
+  "sourceMaps": "both"
+}

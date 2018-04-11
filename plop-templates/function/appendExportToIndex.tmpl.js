@@ -1,0 +1,1 @@
+export { {{ functionName }} } from './{{kebabCase functionName}}';
