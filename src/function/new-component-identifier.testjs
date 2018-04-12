@@ -1,4 +1,4 @@
-import { lpppofe } from './lpppofe'; 
+import { newComponentIdentifier } from './new-component-identifier'; 
 
 
 beforeEach(() => {

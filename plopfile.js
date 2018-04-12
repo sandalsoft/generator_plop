@@ -1,71 +1,30 @@
-const fuzzy = require('fuzzy');
-const inquirer = require('inquirer');
+// const inquirer = require('inquirer');
+const path = require('path');
 
 const handleFunctionAction = require('./plop-templates/function/handle-function-action');
 const listDirectories = require('./plop-templates/function/list-directories');
+const functionPrompts = require('./plop-templates/function/function-prompts');
+const functionActions = require('./plop-templates/function/function-actions');
+const componentPrompts = require('./plop-templates/component/component-prompts');
+const componentActions = require('./plop-templates/component/component-actions');
 
-const dirList = listDirectories('./src');
-const componentChoices = [
-  'NEW COMPONENT',
-  new inquirer.Separator(),
-  ...dirList
-];
+// console.log(`rootPath: ${JSON.stringify(rootPath)}`);
 
 module.exports = function(plop) {
   plop.setActionType('addExportToIndex', function(answers, config, plop) {
     return handleFunctionAction(answers, config);
   });
 
+  // plop.getDestBasePath;
   plop.setGenerator('function', {
     description: 'Create a new function',
-    prompts: [
-      {
-        type: 'input',
-        name: 'functionName',
-        message: 'Function name (pascalCase): '
-      },
-      {
-        type: 'list',
-        name: 'componentName',
-        message: 'Select component',
-        choices: componentChoices
-      }
-    ],
-    actions: [
-      {
-        type: 'add',
-        path: 'src/{{componentName}}/{{kebabCase functionName}}.js',
-        templateFile: 'plop-templates/function/createFunction.tmpl.js'
-      },
-      {
-        type: 'add',
-        path: 'src/{{componentName}}/{{kebabCase functionName}}.test.js',
-        templateFile: 'plop-templates/function/createTest.tmpl.js'
-      },
-      {
-        type: 'addExportToIndex',
-        indexPath: 'src/{{componentName}}/index.js'
-        //   // templateFile: 'plop-templates/function/appendExportToIndex.tmpl.js',
-        //   teomplate: `export { {{ functionName }} } from './{{kebabCase functionName}}';`
-      }
-    ]
+    prompts: functionPrompts,
+    actions: functionActions
   });
 
   plop.setGenerator('component', {
     description: 'Node application component',
-    prompts: [
-      {
-        type: 'input',
-        name: 'componentName',
-        message: 'Component name: '
-      }
-    ],
-    actions: [
-      {
-        type: 'add',
-        path: 'src/{{componentName}}/index.js',
-        templateFile: 'plop-templates/component/createIndex.js'
-      }
-    ]
+    prompts: componentPrompts,
+    actions: componentActions
   });
 };

@@ -1,4 +1,4 @@
-import { oeeqofr313fe } from './oeeqofr313fe'; 
+import { functionPrompts } from './function-prompts'; 
 
 
 beforeEach(() => {
