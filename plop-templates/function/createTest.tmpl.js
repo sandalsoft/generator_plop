@@ -1,5 +1,8 @@
 import { {{functionName}} } from './{{kebabCase functionName}}'; 
+import { readFile } from '@sandalsoft/utils';
 
+const testFile = './test/format-option.stub.json';
+const testData = readFile({ filePath: testFile });
 
 beforeEach(() => {
   true;
@@ -11,11 +14,10 @@ afterEach(() => {
 });
 
 
-test('description:',async () => { 
+test('{{functionName}} works',async () => { 
   expect.assertions(1);
-  
 
   const expected = true; 
-  const actual = false; 
+  const actual = {{functionName}}();
   expect(actual).toEqual(expected); 
 });

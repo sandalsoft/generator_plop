@@ -3,7 +3,7 @@ const path = require('path');
 const changeCase = require('change-case');
 
 const fileExists = require('../util/file-exists');
-const newComponentIdentifier = require('./new-component-identifier');
+const newComponentIdentifier = require('../util/new-component-identifier');
 
 function handleFunctionAction(answers, config) {
   const componentName = answers.componentName;
