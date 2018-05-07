@@ -7,7 +7,7 @@ const reactclassActions = [
     // path defaults to the plop project folder.  need to pass absolute paths here
     path: path.join(
       rootPath,
-      'src/components/{{componentName}}/{{kebabCase reactclassName}}.js'
+      'src/components/{{componentName}}/{{pascalCase reactclassName}}.js'
     ),
     templateFile: 'plop-templates/reactclass/createreactclass.tmpl.js'
   },
@@ -15,7 +15,7 @@ const reactclassActions = [
     type: 'add',
     path: path.join(
       rootPath,
-      'src/components/{{componentName}}/{{kebabCase reactclassName}}.test.js'
+      'src/components/{{componentName}}/{{pascalCase reactclassName}}.test.js'
     ),
     templateFile: 'plop-templates/reactclass/createreactclass.test.tmpl.js'
   },
