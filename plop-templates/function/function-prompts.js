@@ -1,18 +1,21 @@
 const fuzzy = require('fuzzy');
 const inquirer = require('inquirer');
 const path = require('path');
-
 const autocomplete = require('inquirer-autocomplete-prompt');
+
+var getProjectDetails = require('../util/get-project-details');
 const handleFunctionAction = require('./handle-function-action');
 const listDirectories = require('../util/list-directories');
 const newComponentIdentifier = require('../util/new-component-identifier');
 
-const rootPath = process.cwd();
-const srcPath = path.join(rootPath, './src');
+// const srcPath = path.join(rootPath, './src');
+const { featuresBasePath } = getProjectDetails({
+  answers: { projectType: 'node' }
+});
 
-console.log(`rootPath: ${JSON.stringify(rootPath)}`);
+// console.log(`rootPath: ${JSON.stringify(rootPath)}`);
 
-const dirList = listDirectories(srcPath);
+const dirList = listDirectories(featuresBasePath);
 const componentChoices = [
   ...dirList,
   new inquirer.Separator(),
@@ -21,6 +24,12 @@ const componentChoices = [
 ];
 
 const functionPrompts = [
+  {
+    type: 'input',
+    name: 'projectType',
+    message: 'Project Type: ',
+    choices: ['react', 'node']
+  },
   {
     type: 'input',
     name: 'functionName',

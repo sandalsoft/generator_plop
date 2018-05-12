@@ -22,7 +22,8 @@ const functionActions = [
   {
     type: 'actionAddExportToIndex',
     projectType: 'node',
-    indexPath: path.join(rootPath, 'src/{{componentName}}/index.js')
+    // indexPath: path.join(rootPath, 'src/{{componentName}}/index.js')
+    componentsRootPath: path.join(rootPath, 'src')
   },
   {
     type: 'add',
