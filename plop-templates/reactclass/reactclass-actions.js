@@ -11,20 +11,6 @@ const reactclassActions = [
     ),
     templateFile: 'plop-templates/reactclass/createreactclass.tmpl.js'
   },
-  // {
-  //   type: 'add',
-  //   path: path.join(
-  //     rootPath,
-  //     'src/components/{{componentName}}/{{pascalCase reactclassName}}.test.js'
-  //   ),
-  //   templateFile: 'plop-templates/reactclass/createreactclass.test.tmpl.js'
-  // },
-  // {
-  //   type: 'append',
-  //   path: path.join(rootPath, 'src/components/{{componentName}}/index.js'),
-  //   pattern: /^.$/gm,
-  //   template: `export { {{reactclassName}} } from './{{pascalCase reactclassName}}'`
-  // }
   {
     type: 'actionAddExportToIndex',
     projectType: 'react',
