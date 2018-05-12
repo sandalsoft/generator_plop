@@ -1,7 +1,8 @@
 // const inquirer = require('inquirer');
 const path = require('path');
 
-const handleFunctionAction = require('./plop-templates/function/handle-function-action');
+// const handleFunctionAction = require('./plop-templates/function/handle-function-action');
+const actionAddExportToIndex = require('./plop-templates/util/actionAddExportToIndex');
 const listDirectories = require('./plop-templates/util/list-directories');
 const functionPrompts = require('./plop-templates/function/function-prompts');
 const functionActions = require('./plop-templates/function/function-actions');
@@ -12,8 +13,8 @@ const reactclassActions = require('./plop-templates/reactclass/reactclass-action
 // console.log(`rootPath: ${JSON.stringify(rootPath)}`);
 
 module.exports = function(plop) {
-  plop.setActionType('addExportToIndex', function(answers, config, plop) {
-    return handleFunctionAction(answers, config);
+  plop.setActionType('actionAddExportToIndex', function(answers, config, plop) {
+    return actionAddExportToIndex(answers, config);
   });
 
   plop.setGenerator('reactclass', {

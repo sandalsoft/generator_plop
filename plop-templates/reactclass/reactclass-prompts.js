@@ -26,6 +26,12 @@ const reactclassPrompts = [
   },
   {
     type: 'list',
+    name: 'reactclassType',
+    message: 'Type to create: ',
+    choices: ['statefulClass', 'statelessFunction']
+  },
+  {
+    type: 'list',
     name: 'componentName',
     message: 'Select component',
     choices: componentChoices

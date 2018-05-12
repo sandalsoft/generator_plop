@@ -20,7 +20,8 @@ const functionActions = [
     templateFile: 'plop-templates/function/createTest.tmpl.js'
   },
   {
-    type: 'addExportToIndex',
+    type: 'actionAddExportToIndex',
+    projectType: 'node',
     indexPath: path.join(rootPath, 'src/{{componentName}}/index.js')
   },
   {
