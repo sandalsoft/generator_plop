@@ -3,7 +3,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 
-test('{{reactclassName}} works',async () => { 
+test('{{reactFeature}} works',async () => { 
   expect.assertions(1);
 
   const expected = true; 

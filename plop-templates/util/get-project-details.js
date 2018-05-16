@@ -15,8 +15,8 @@ function getNodeProjectDetails(answers) {
 
 function getReactProjectDeatils(answers) {
   return {
-    moduleFilename: changeCase.pascalCase(answers.reactclassName),
-    exportName: answers.reactclassName,
+    moduleFilename: changeCase.pascalCase(answers.reactFeature),
+    exportName: answers.reactFeature,
     featuresBasePath: path.join(rootPath, 'src', 'components')
   };
 }

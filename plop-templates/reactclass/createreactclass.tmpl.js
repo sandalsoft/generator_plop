@@ -1,17 +1,26 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { Consumer } from '.';
 
-export default class {{reactclassName}} extends Component {
+export class {{reactFeature}} extends React.Component {
   
-
   render() {
-    return <div>
-    
-    </div>;
-  }
+    return (
+      <Consumer>
+        {(context) => {
+          const { state, actions } = context;
 
-  static propTypes = {
-    
-  };
+          return state.data ? (
+            <React.Fragment>
+            state.data is truthy
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              state.data is falsey
+            </React.Fragment>
+          );
+        }}
+      </Consumer>
+    );
+  }
 }
 

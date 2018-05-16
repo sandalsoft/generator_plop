@@ -1,7 +1,7 @@
 import React from 'react';
 import { Consumer } from '.';
 
-export const {{reactFeature}} = (/*{destructure props here}*/) => (
+const TickerInput = (/*{destructure proper here}*/) => (
       <Consumer>
         {(context) => {
           const { state, actions } = context;

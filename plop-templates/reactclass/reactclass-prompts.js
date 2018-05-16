@@ -32,14 +32,24 @@ const reactclassPrompts = [
   },
   {
     type: 'input',
-    name: 'reactclassName',
-    message: 'Class name (pascalCase): '
+    name: 'reactFeature',
+    message: 'Name of feature: '
   },
   {
     type: 'list',
     name: 'reactclassType',
     message: 'Type to create: ',
-    choices: ['statefulClass', 'statelessFunction']
+    choices: [
+      {
+        name: 'Class - Stateful',
+        value: 'class',
+        short: 'Class'
+      },
+      {
+        name: 'Function - Stateless',
+        value: 'function'
+      }
+    ]
   },
   {
     type: 'list',
