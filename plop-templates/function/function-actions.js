@@ -20,8 +20,20 @@ const functionActions = [
     templateFile: "plop-templates/function/createTest.tmpl.js"
   },
   {
+<<<<<<< HEAD
     type: "addExportToIndex",
     indexPath: path.join(rootPath, "src/{{componentName}}/index.js")
+=======
+    type: 'actionAddExportToIndex',
+    projectType: 'node',
+    // indexPath: path.join(rootPath, 'src/{{componentName}}/index.js')
+    componentsRootPath: path.join(rootPath, 'src')
+  },
+  {
+    type: 'add',
+    path: path.join(rootPath, 'test/{{kebabCase functionName}}.stub.json'),
+    templateFile: 'plop-templates/function/createTestStub.tmpl.js'
+>>>>>>> origin/react_project_support
   }
 ];
 

@@ -3,15 +3,13 @@ const inquirer = require('inquirer');
 const path = require('path');
 const autocomplete = require('inquirer-autocomplete-prompt');
 
-const getProjectDetails = require('../util/get-project-details');
-const handleFunctionAction = require('./handle-function-action');
+var getProjectDetails = require('../util/get-project-details');
 const listDirectories = require('../util/list-directories');
 const newComponentIdentifier = require('../util/new-component-identifier');
 const fileExists = require('../util/file-exists');
 
-// const srcPath = path.join(rootPath, './src');
 const projectDetails = getProjectDetails({
-  answers: { projectType: 'node' }
+  projectType: 'react'
 });
 
 const dirList = fileExists(projectDetails.featuresBasePath)
@@ -25,7 +23,7 @@ const componentChoices = [
   new inquirer.Separator()
 ];
 
-const functionPrompts = [
+const reactclassPrompts = [
   {
     type: 'list',
     name: 'projectType',
@@ -34,13 +32,29 @@ const functionPrompts = [
   },
   {
     type: 'input',
-    name: 'functionName',
-    message: 'Function name (pascalCase): '
+    name: 'reactFeature',
+    message: 'Name of feature: '
+  },
+  {
+    type: 'list',
+    name: 'reactclassType',
+    message: 'Type to create: ',
+    choices: [
+      {
+        name: 'Class - Stateful',
+        value: 'class',
+        short: 'Class'
+      },
+      {
+        name: 'Function - Stateless',
+        value: 'function'
+      }
+    ]
   },
   {
     type: 'list',
     name: 'componentName',
-    message: 'Select node component',
+    message: 'Select component',
     choices: componentChoices
   },
   {
@@ -53,4 +67,4 @@ const functionPrompts = [
   }
 ];
 
-module.exports = functionPrompts;
+module.exports = reactclassPrompts;

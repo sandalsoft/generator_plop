@@ -1,16 +1,19 @@
 const fs = require('fs-extra');
 const path = require('path');
 const changeCase = require('change-case');
-
-const fileExists = require('../util/file-exists');
-const newComponentIdentifier = require('../util/new-component-identifier');
+const getProjectDetails = require('./get-project-details');
+const fileExists = require('./file-exists');
+const newComponentIdentifier = require('./new-component-identifier');
 
 function handleFunctionAction(answers, config) {
+  // console.log(`config: ${JSON.stringify(config)}`);
+  // console.log(`answers: ${JSON.stringify(answers)}`);
   const componentName = answers.componentName;
-  const componentPath = path.join(process.cwd(), 'src', componentName);
-  const functionName = answers.functionName;
-  const functionFileName = changeCase.paramCase(functionName);
-  const exportTemplate = `export { ${functionName} } from './${functionFileName}';\n`;
+
+  const componentPath = path.join(config.componentsRootPath, componentName);
+
+  const { exportName, moduleFilename } = getProjectDetails(answers);
+  const exportTemplate = `export { ${exportName} } from './${moduleFilename}';\n`;
 
   answers.componentName === newComponentIdentifier &&
     fs.mkdirsSync(componentPath);

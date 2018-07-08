@@ -5,6 +5,6 @@ import { log } from 'loggia';
  * @param {} .
  * @returns {Promise<{}>} .
  */
-export const {{functionName}} = async () => { 
+export const pleaseWork = async () => { 
 
 };

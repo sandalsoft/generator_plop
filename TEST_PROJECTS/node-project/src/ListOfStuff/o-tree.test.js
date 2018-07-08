@@ -1,4 +1,4 @@
-import { {{functionName}} } from './{{kebabCase functionName}}'; 
+import { oTree } from './o-tree'; 
 import { readFile } from '@sandalsoft/utils';
 
 const testFile = './test/format-option.stub.json';
@@ -14,10 +14,10 @@ afterEach(() => {
 });
 
 
-test('{{functionName}} works',async () => { 
+test('oTree works',async () => { 
   expect.assertions(1);
 
   const expected = true; 
-  const actual = {{functionName}}();
+  const actual = oTree();
   expect(actual).toEqual(expected); 
 });
