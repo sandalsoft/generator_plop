@@ -1,17 +1,17 @@
-const fuzzy = require('fuzzy');
-const inquirer = require('inquirer');
+const _ = require("lodash");
+const fuzzy = require("fuzzy");
+const inquirer = require("inquirer");
+const listDirectories = require("./list-directories");
+const dirList = listDirectories("./src");
+const componentSource = ["NEW COMPONENT", ...dirList];
+
 inquirer.registerPrompt(
-  'autocomplete',
-  require('inquirer-autocomplete-prompt')
+  "autocomplete",
+  require("inquirer-autocomplete-prompt")
 );
 
-const listDirectories = require('./list-directories');
-
-const dirList = listDirectories('./src');
-const componentSource = ['NEW COMPONENT', ...dirList];
-const _ = require('lodash');
 function searchComponent(answers, input) {
-  input = input || '';
+  input = input || "";
   return new Promise(function(resolve) {
     setTimeout(function() {
       const fuzzyResult = fuzzy.filter(input, componentSource);
@@ -25,9 +25,9 @@ function searchComponent(answers, input) {
 }
 
 const componentPrompt = inquirer.prompt({
-  type: 'autocomplete',
-  name: 'componentName',
-  message: 'Select component',
+  type: "autocomplete",
+  name: "componentName",
+  message: "Select component",
   source: searchComponent
 });
 
