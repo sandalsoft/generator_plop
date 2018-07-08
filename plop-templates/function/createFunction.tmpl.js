@@ -1,10 +1,6 @@
-import { log } from 'loggia';
+// @ts-check
 
-/**
- * @description .
- * @param {} .
- * @returns {Promise<{}>} .
- */
+/** @type {(foo: String) => Promise<String>} */
 export const {{functionName}} = async () => { 
 
 };
