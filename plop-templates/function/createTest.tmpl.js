@@ -18,7 +18,6 @@ test('{{functionName}} works', async () => {
   expect.assertions(1);
   testData;
   const expected = true;
-  const actual = {{ functionName }
-}();
-expect(actual).toEqual(expected); 
+
+  expect(actual).toEqual(expected);
 });
